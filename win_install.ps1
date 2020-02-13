@@ -1,23 +1,12 @@
 # ViMars installation for Windows via PowerShell
-# Austin Bricker, 2019
+# Austin Bricker, 2019-2020
 
 # Configs use the "Roboto Mono for Powerline" font, which is not installed as part of this script
 
 # gVim for Windows can be installed from here: https://www.vim.org/download.php
 
-$PLUGINS =
-    "ajh17/VimCompletesMe",
-    "easymotion/vim-easymotion",
-    "jiangmiao/auto-pairs",
-    "machakann/vim-highlightedyank",
-    "mhinz/vim-signify",
-    "tpope/vim-commentary",
-    "tpope/vim-fugitive",
-    "tpope/vim-repeat",
-    "tpope/vim-surround",
-    "tpope/vim-unimpaired",
-    "vim-airline/vim-airline",
-    "Yggdroot/indentLine"
+# Import plugin list
+$PLUGINS = Get-Content plugins.txt
 
 # Checks if git is installed
 if ( -Not ( Get-Command git -ErrorAction SilentlyContinue ) ) {
