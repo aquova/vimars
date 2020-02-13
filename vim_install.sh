@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # ViMars installation for Unix-based OSes
-# Austin Bricker, 2018-2019
+# Austin Bricker, 2018-2020
 
 # Checks if git and curl are installed.
 if [! command -v git >/dev/null] || [! command -v curl >/dev/null]; then
@@ -16,21 +16,8 @@ curl -LSso $HOME/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim;
 
 BUNDLE_DIR="$HOME/.vim/bundle/"
 
-# Plugin names are GitHub Username/RepoName
-PLUGINS=(
-    ajh17/VimCompletesMe
-    easymotion/vim-easymotion
-    jiangmiao/auto-pairs
-    machakann/vim-highlightedyank
-    mhinz/vim-signify
-    tpope/vim-commentary
-    tpope/vim-fugitive
-    tpope/vim-repeat
-    tpope/vim-surround
-    tpope/vim-unimpaired
-    vim-airline/vim-airline
-    Yggdroot/indentLine
-)
+# Import plugin list
+readarray -t PLUGINS < plugins.txt
 
 echo "Installing Vim plugins";
 
