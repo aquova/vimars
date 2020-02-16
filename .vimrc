@@ -1,5 +1,5 @@
 " ViMars vimrc
-" Austin Bricker, 2017-2019
+" Austin Bricker, 2017-2020
 
 set background=dark
 let &t_Co=256 " Enables true color in Terminal
