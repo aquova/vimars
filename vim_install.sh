@@ -16,17 +16,9 @@ curl -LSso $HOME/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim;
 
 BUNDLE_DIR="$HOME/.vim/bundle/"
 
-# Import plugin list
-readarray -t PLUGINS < plugins.txt
-
 echo "Installing Vim plugins";
-
-for p in "${PLUGINS[@]}"; do
-    REPO_NAME=$(echo "$p" | cut -d'/' -f2-);
-
-    echo "Installing $REPO_NAME";
-    git clone --quiet "https://github.com/$p" "$BUNDLE_DIR$REPO_NAME" > /dev/null;
-done
+git submodule update --init
+cp -r plugins/* $BUNDLE_DIR
 
 echo "Installing colorscheme";
 git clone --quiet https://github.com/joshdick/onedark.vim > /dev/null;

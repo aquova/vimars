@@ -1,3 +1,4 @@
 # Ignore Vim temp files
 *.swp
 
+*.code-workspace
