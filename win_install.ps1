@@ -2,11 +2,7 @@
 # Austin Bricker, 2019-2020
 
 # Configs use the "Roboto Mono for Powerline" font, which is not installed as part of this script
-
 # gVim for Windows can be installed from here: https://www.vim.org/download.php
-
-# Import plugin list
-$PLUGINS = Get-Content plugins.txt
 
 # Checks if git is installed
 if ( -Not ( Get-Command git -ErrorAction SilentlyContinue ) ) {
@@ -31,20 +27,15 @@ New-Item -ItemType directory -Path bundle   -ErrorAction SilentlyContinue | Out-
 New-Item -ItemType directory -Path colors   -ErrorAction SilentlyContinue | Out-Null
 # Install Pathogen, place into autoload folder
 Invoke-WebRequest -OutFile autoload\pathogen.vim https://tpo.pe/pathogen.vim
-
-Set-Location bundle
+Pop-Location
 
 Write-Output "Installing Vim plugins"
 Write-Output "---"
-
-foreach ($p in $PLUGINS) {
-    $REPO_NAME = ($p -split "/")[1]
-    Write-Output "Installing $REPO_NAME"
-    git clone --quiet "https://github.com/$p" "$REPO_NAME"
-}
+git submodule update --init
+Move-Item plugins/* "$VIM_DIR\bundle"
 Write-Output "---"
 
-Set-Location ..
+Push-Location "$VIM_DIR"
 Write-Output "Installing colorscheme"
 git clone --quiet https://github.com/joshdick/onedark.vim
 Move-Item onedark.vim/colors/onedark.vim colors
@@ -58,6 +49,7 @@ Remove-Item _vimrc -ErrorAction SilentlyContinue
 Pop-Location
 Write-Output "Moving vimrc into place"
 Copy-Item ".vimrc" $VIM_DIR
-Rename-Item -Path "$VIM_DIR\.vimrc" -NewName "_vimrc"
+# Rename vimrc to be for gVim, to not interfere with other shells, like VSCode
+Rename-Item -Path "$VIM_DIR\.vimrc" -NewName "_gvimrc"
 
 Write-Output "Complete! Your Vim installation (should) be complete! Enjoy!"
