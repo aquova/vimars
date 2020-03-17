@@ -1,15 +1,18 @@
-#!/bin/sh
+#!/bin/bash
 
 # ViMars installation for Unix-based OSes
 # Austin Bricker, 2018-2020
 
 # Checks if git and curl are installed.
-if [! command -v git >/dev/null] || [! command -v curl >/dev/null]; then
-    echo "git and curl must be installed. Please install them before proceeding.";
+if ! [ -x "$(command -v git)" ]; then
+    echo "git must be installed. Please install them before proceeding.";
+    exit 1;
+elif ! [ -x "$(command -v curl)" ]; then
+    echo "curl must be installed. Please install them before proceeding.";
     exit 1;
 fi
 
-#Install Pathogen, place into autoload folder
+# Install Pathogen, place into autoload folder
 echo "Installing Pathogen";
 mkdir -p $HOME/.vim/autoload $HOME/.vim/bundle $HOME/.vim/colors;
 curl -LSso $HOME/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim;
