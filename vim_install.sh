@@ -12,16 +12,10 @@ elif ! [ -x "$(command -v curl)" ]; then
     exit 1;
 fi
 
-# Install Pathogen, place into autoload folder
-echo "Installing Pathogen";
+# Install Vundle, place into autoload folder
+echo "Installing Vundle";
 mkdir -p $HOME/.vim/autoload $HOME/.vim/bundle $HOME/.vim/colors;
-curl -LSso $HOME/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim;
-
-BUNDLE_DIR="$HOME/.vim/bundle/"
-
-echo "Installing Vim plugins";
-git submodule update --init
-cp -r plugins/* $BUNDLE_DIR
+git clone --quiet https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim > /dev/null;
 
 echo "Installing colorscheme";
 git clone --quiet https://github.com/joshdick/onedark.vim > /dev/null;
@@ -32,4 +26,4 @@ rm -rf onedark.vim;
 echo "Moving vimrc into place";
 cp .vimrc $HOME;
 
-echo "Complete! Your Vim installation (should) be complete! Enjoy!";
+echo "Complete! To finish installation, either run ':PluginInstall' within Vim, or run 'vim +PluginInstall +qall'! Enjoy!";

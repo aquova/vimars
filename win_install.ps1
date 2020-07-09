@@ -25,17 +25,9 @@ Write-Output "Installing Pathogen"
 New-Item -ItemType directory -Path autoload -ErrorAction SilentlyContinue | Out-Null
 New-Item -ItemType directory -Path bundle   -ErrorAction SilentlyContinue | Out-Null
 New-Item -ItemType directory -Path colors   -ErrorAction SilentlyContinue | Out-Null
-# Install Pathogen, place into autoload folder
-Invoke-WebRequest -OutFile autoload\pathogen.vim https://tpo.pe/pathogen.vim
-Pop-Location
+# Install Vundle, place into autoload folder
+git clone --quiet https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim > /dev/null;
 
-Write-Output "Installing Vim plugins"
-Write-Output "---"
-git submodule update --init
-Move-Item plugins/* "$VIM_DIR\bundle"
-Write-Output "---"
-
-Push-Location "$VIM_DIR"
 Write-Output "Installing colorscheme"
 git clone --quiet https://github.com/joshdick/onedark.vim
 Move-Item onedark.vim/colors/onedark.vim colors
@@ -43,10 +35,10 @@ Move-Item onedark.vim/autoload/* autoload
 Remove-Item -Recurse -Force onedark.vim
 
 # Remove pre-existing vimrc, if it exists
-Set-Location ..
+Set-Location $VIM_DIR
 Remove-Item _vimrc -ErrorAction SilentlyContinue
-
 Pop-Location
+
 Write-Output "Moving vimrc into place"
 Copy-Item ".vimrc" $VIM_DIR
 # Rename vimrc to be for gVim, to not interfere with other shells, like VSCode

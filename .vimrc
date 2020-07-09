@@ -6,8 +6,27 @@ let &t_Co=256 " Enables true color in Terminal
 colorscheme onedark
 
 """ Vim settings """
-" Enables Pathogen plugin helper
-execute pathogen#infect()
+" Enables Vundle plugin helper
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+
+Plugin 'ajh17/VimCompletesMe'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'machakann/vim-highlightedyank'
+Plugin 'mhinz/vim-signify'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'vim-airline/vim-airline'
+Plugin 'Yggdroot/indentLine'
+
+call vundle#end()
+filetype plugin indent on
 
 syntax enable           " Turn on syntax highlighting
 set encoding=utf-8

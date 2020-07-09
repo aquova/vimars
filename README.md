@@ -10,7 +10,7 @@ Installation scripts for the ultimate Vim configuration. Installs lightweight pl
 
 ### Featured Plug-ins
 
-- [Pathogen](https://github.com/tpope/pathogen.vim)
+- [Vundle](https://github.com/VundleVim/Vundle.vim)
     - Lightweight Vim plugin manager
 - [VimCompletesMe](https://github.com/ajh17/VimCompletesMe)
     - Autocompletion based on previously typed words. Entirely in Vimscript.
