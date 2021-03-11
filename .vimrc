@@ -1,7 +1,8 @@
 " ViMars vimrc
-" Austin Bricker, 2017-2020
+" Austin Bricker, 2017-2021
 
 set background=dark
+set term=screen-256color
 let &t_Co=256 " Enables true color in Terminal
 colorscheme onedark
 
