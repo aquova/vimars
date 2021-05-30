@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # ViMars installation for Unix-based OSes
-# Austin Bricker, 2018-2020
+# Austin Bricker, 2018-2021
 
 # Checks if git and curl are installed.
 if ! [ -x "$(command -v git)" ]; then
@@ -25,5 +25,10 @@ rm -rf onedark.vim;
 
 echo "Moving vimrc into place";
 cp .vimrc $HOME;
+
+echo "Linking Neovim install to Vim"
+cp init.vim $HOME/.vim
+cp ginit.vim $HOME/.vim
+ln -s $HOME/.vim $HOME/.config/nvim
 
 echo "Complete! To finish installation, either run ':PluginInstall' within Vim, or run 'vim +PluginInstall +qall'! Enjoy!";
