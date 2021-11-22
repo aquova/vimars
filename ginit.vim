@@ -1,8 +1,8 @@
 set mouse=a
 
-if exists(':GuiFont')
-	GuiFont {font_name}:h{size}
-endif
+" if exists(':GuiFont')
+" 	GuiFont {font_name}:h{size}
+" endif
 
 if exists(':GuiTabline')
 	GuiTabline 0

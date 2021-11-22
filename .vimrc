@@ -2,7 +2,6 @@
 " Austin Bricker, 2017-2021
 
 set background=dark
-set term=screen-256color
 let &t_Co=256 " Enables true color in Terminal
 colorscheme onedark
 
@@ -215,6 +214,7 @@ autocmd FileType applescript setlocal commentstring=--\ %s
 autocmd FileType rust setlocal commentstring=//\ %s
 
 " Set syntax highlighting for unknown file extension
+autocmd BufNewFile,BufRead *.p8 set syntax=lua
 autocmd BufNewFile,BufRead *.tic set syntax=lua
 autocmd BufNewFile,BufRead *.command set syntax=sh
 autocmd BufNewFile,BufRead *.cr set syntax=ruby
@@ -230,7 +230,6 @@ autocmd FileType json let g:indentLine_enabled=0
 " Airline tab theme settings
 let g:airline_theme='onedark'
 let g:airline_powerline_fonts = 1
-set guifont=Roboto\ Mono\ for\ Powerline:h11
 
 let g:airline_left_sep='▓▒░'
 let g:airline_right_sep='░▒▓'
