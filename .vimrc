@@ -2,7 +2,10 @@
 " Austin Bricker, 2017-2021
 
 set background=dark
-set term=screen-256color
+" Neovim doesn't support 'term' and will throw an error
+if !has('nvim')
+    set term=screen-256color
+endif
 colorscheme onedark
 
 """ Vim settings """
