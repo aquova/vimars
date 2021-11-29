@@ -2,7 +2,7 @@
 " Austin Bricker, 2017-2021
 
 set background=dark
-let &t_Co=256 " Enables true color in Terminal
+set term=screen-256color
 colorscheme onedark
 
 """ Vim settings """
@@ -15,7 +15,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'ajh17/VimCompletesMe'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'jiangmiao/auto-pairs'
-Plugin 'jremmen/vim-ripgrep'
+Plugin 'junegunn/fzf.vim' " Requires fzf installed
 Plugin 'machakann/vim-highlightedyank'
 Plugin 'mhinz/vim-signify'
 Plugin 'tpope/vim-commentary'
