@@ -1,12 +1,12 @@
-# viMars
+# vimars
 
-Vim setup and configuration so good, it's from another planet.
+My personal Vim configuration and setup scripts, now with a cute repo name.
 
 https://github.com/aquova/vimars
 
 ## Overview
 
-Installation scripts for the ultimate Vim configuration. Installs lightweight plugins, colorscheme, and optimal settings.
+Installation scripts for the my Vim configuration. Installs lightweight plugins, colorscheme, and optimal settings.
 
 ### Featured Plug-ins
 
@@ -18,6 +18,8 @@ Installation scripts for the ultimate Vim configuration. Installs lightweight pl
     - Additional keybinds for navigation.
 - [Auto Pairs](https://github.com/jiangmiao/auto-pairs)
     - Automatically adds matching [({})] when typed.
+- [fzf](https://github.com/junegunn/fzf.vim)
+    - Built-in fzf support.
 - [Highlighted Yank](https://github.com/machakann/vim-highlightedyank)
     - Briefly highlights selection when yanked
 - [Vim Signify](https://github.com/mhinz/vim-signify)
@@ -50,18 +52,6 @@ These scripts do not actually install Vim, you will need to do that yourself. Vi
 
 Run the `win_install.ps1` script via PowerShell. Requires git to be installed. By default, the script assumes that the Vim home directory is `C:\Users\USERNAME`. This can be confirmed by running `:echo $HOME` within Vim, and changing the `$VIM_DIR` variable if this is not the case.
 
-### Mac
-
-Double click the `mac_install.command` program. This script is a wrapper for the `vim_install.sh` script, but also asks if you wish to install MacVim. The script will check that git and curl are installed, if they are not you will need to install them first before proceeding.
-
-### Linux
+### Mac/Linux
 
 Run `./vim_install.sh`. The script will check that git and curl are installed, if they are not you will need to install them first before proceeding.
-
-## Todo
-
-- Install Vim if not installed
-    - Ask to install gVim or MacVim if not installed
-- Check if git on Windows is installed
-- Install Powerline font if not installed
-- Get cool logo/ASCII art
