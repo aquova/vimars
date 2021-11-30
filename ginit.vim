@@ -1,8 +1,8 @@
-set mouse=a
+" ViMars ginit.vim
+" Austin Bricker, 2021
+" Configuration file for GUI Vim-based programs, like Neovim
 
-" if exists(':GuiFont')
-" 	GuiFont {font_name}:h{size}
-" endif
+set mouse=a
 
 if exists(':GuiTabline')
 	GuiTabline 0

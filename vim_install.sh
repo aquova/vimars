@@ -23,12 +23,11 @@ mv onedark.vim/colors/onedark.vim ~/.vim/colors;
 mv onedark.vim/autoload/* ~/.vim/autoload;
 rm -rf onedark.vim;
 
-echo "Moving vimrc into place";
+echo "Moving configuration files into place";
 cp .vimrc $HOME;
-
-echo "Linking Neovim install to Vim"
-cp init.vim $HOME/.vim
-cp ginit.vim $HOME/.vim
-ln -s $HOME/.vim $HOME/.config/nvim
+cp .gvimrc $HOME;
+cp init.vim $HOME/.vim;
+cp ginit.vim $HOME/.vim;
+ln -s $HOME/.vim $HOME/.config/nvim;
 
 echo "Complete! To finish installation, either run ':PluginInstall' within Vim, or run 'vim +PluginInstall +qall'! Enjoy!";
