@@ -199,6 +199,9 @@ endfunction
 
 let g:airline_section_y = '%{Current_git_branch()}'
 
+" Open fzf info in split rather than floating window
+let g:fzf_layout = { 'down': '~40%' }
+
 " Commenting codes for commentary.vim:
 autocmd FileType python setlocal commentstring=#\ %s
 autocmd FileType ruby setlocal commentstring=#\ %s
