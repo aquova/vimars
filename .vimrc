@@ -227,6 +227,7 @@ autocmd BufNewFile,BufRead *.command set syntax=sh
 autocmd BufNewFile,BufRead *.cr set syntax=ruby
 
 " Different tab behavior for different filetype
+autocmd FileType nim setlocal shiftwidth=4 tabstop=4 softtabstop=4
 autocmd FileType pico8 setlocal shiftwidth=1 tabstop=1 softtabstop=1
 autocmd FileType make setlocal noexpandtab
 
