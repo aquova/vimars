@@ -6,6 +6,7 @@
 PLUGINS=(
     'ajh17/VimCompletesMe'
     'easymotion/vim-easymotion'
+    'itchyny/lightline.vim'
     'jiangmiao/auto-pairs'
     'junegunn/fzf.vim' # Requires fzf installed
     'machakann/vim-highlightedyank'
@@ -15,7 +16,6 @@ PLUGINS=(
     'tpope/vim-repeat'
     'tpope/vim-surround'
     'tpope/vim-unimpaired'
-    'vim-airline/vim-airline'
     'Yggdroot/indentLine'
     'zah/nim.vim'
 )

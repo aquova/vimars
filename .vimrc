@@ -149,23 +149,28 @@ au!
 autocmd VimEnter * silent !echo -ne "\e[1 q"
 augroup END
 
-" Change cursor color to match airline tab color
-" Made for the One Dark color scheme
-
-" Default Colors for CursorLine (Normal mode)
-highlight Cursor guibg=#98c379
-
-" Change Color when entering Insert Mode, revert when leaving
-autocmd InsertEnter * highlight  Cursor guibg=#61afef
-autocmd InsertLeave * highlight  Cursor guibg=#98c379
-
 """ Vim plugin configs """
-" Enables vim-airline buffer list by default
-let g:airline#extensions#tabline#enabled = 1
-" Custom airline settings
-let g:airline_section_b = '%{strftime("%c")}'
+" Lightline
+set laststatus=2        " Allows status bar to be displayed
+set noshowmode          " Don't display default mode info
+" General config
+let g:lightline = {
+\   'colorscheme' : 'one',
+\   'active': {
+\       'left': [ [ 'mode', 'paste' ],
+\                 [ 'time' ],
+\                 [ 'readonly', 'filename', 'modified'] ],
+\       'right': [ [ 'percent', 'lineinfo' ],
+\                  [ 'gitbranch' ],
+\                  [ 'fileformat', 'fileencoding', 'filetype' ] ],
+\   },
+\   'component_function': {
+\       'gitbranch' : 'Current_git_branch',
+\       'time' : 'Current_time'
+\   }
+\ }
 
-" Have airline show current git branch, if it exists
+" Function to format git branch name
 function! Current_git_branch()
     let l:branch = split(fugitive#statusline(), '[()]')
     if len(l:branch) > 1
@@ -174,7 +179,10 @@ function! Current_git_branch()
     return ""
 endfunction
 
-let g:airline_section_y = '%{Current_git_branch()}'
+" Function to format current time as DOW DD MM YYYY HH:MM:SS PM TZ
+function! Current_time()
+    return strftime("%c")
+endfunction
 
 " Open fzf info in split rather than floating window
 let g:fzf_layout = { 'down': '~40%' }
@@ -211,15 +219,3 @@ autocmd FileType make setlocal noexpandtab
 " Turn off indentLine for markdown and json as it overrides conceallevel
 autocmd FileType markdown let g:indentLine_enabled=0
 autocmd FileType json let g:indentLine_enabled=0
-
-" Airline tab theme settings
-let g:airline_theme='onedark'
-let g:airline_powerline_fonts = 1
-
-let g:airline_left_sep='▓▒░'
-let g:airline_right_sep='░▒▓'
-
-" Fixes messed up symbols with powerline tab font
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
