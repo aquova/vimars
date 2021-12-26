@@ -5,6 +5,7 @@
 
 PLUGINS=(
     'ajh17/VimCompletesMe'
+    'aquova/vim-pico8-syntax'
     'easymotion/vim-easymotion'
     'itchyny/lightline.vim'
     'jiangmiao/auto-pairs'
