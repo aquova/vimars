@@ -152,10 +152,11 @@ augroup END
 """ Vim plugin configs """
 " Lightline
 set laststatus=2        " Allows status bar to be displayed
+set showtabline=2       " Allows tab bar to be displayed
 set noshowmode          " Don't display default mode info
 " General config
 let g:lightline = {
-\   'colorscheme' : 'one',
+\   'colorscheme': 'one',
 \   'active': {
 \       'left': [ [ 'mode', 'paste' ],
 \                 [ 'time' ],
@@ -164,9 +165,19 @@ let g:lightline = {
 \                  [ 'gitbranch' ],
 \                  [ 'fileformat', 'fileencoding', 'filetype' ] ],
 \   },
+\   'tabline': {
+\       'left': [ [ 'buffers' ] ],
+\       'right': [ [ ] ]
+\   },
 \   'component_function': {
 \       'gitbranch' : 'Current_git_branch',
 \       'time' : 'Current_time'
+\   },
+\   'component_expand': {
+\       'buffers': 'lightline#bufferline#buffers'
+\   },
+\   'component_type': {
+\       'buffers': 'tabsel'
 \   }
 \ }
 

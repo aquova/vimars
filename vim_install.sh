@@ -10,6 +10,7 @@ PLUGINS=(
     'jiangmiao/auto-pairs'
     'junegunn/fzf.vim' # Requires fzf installed
     'machakann/vim-highlightedyank'
+    'mengelbrecht/lightline-bufferline'
     'mhinz/vim-signify'
     'tpope/vim-commentary'
     'tpope/vim-fugitive'
