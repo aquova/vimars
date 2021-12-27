@@ -167,11 +167,12 @@ let g:lightline = {
 \   },
 \   'tabline': {
 \       'left': [ [ 'buffers' ] ],
-\       'right': [ [ ] ]
+\       'right': [ [ 'sym' ] ]
 \   },
 \   'component_function': {
 \       'gitbranch' : 'Current_git_branch',
-\       'time' : 'Current_time'
+\       'time' : 'Current_time',
+\       'sym' : 'Hostname_symbol'
 \   },
 \   'component_expand': {
 \       'buffers': 'lightline#bufferline#buffers'
@@ -193,6 +194,35 @@ endfunction
 " Function to format current time as DOW DD MM YYYY HH:MM:SS PM TZ
 function! Current_time()
     return strftime("%c")
+endfunction
+
+" Function to grab the planetary symbol based on hostname
+function! Hostname_symbol()
+    if !exists("g:HostnameSymbol")
+        let hostname = hostname()
+        if hostname is "mercury"
+            let g:HostnameSymbol = "☿"
+        elseif hostname is "venus"
+            let g:HostnameSymbol = "♀"
+        elseif hostname is "earth"
+            let g:HostnameSymbol = "🜨"
+        elseif hostname is "mars"
+            let g:HostnameSymbol = "♂"
+        elseif hostname is "jupiter"
+            let g:HostnameSymbol = "♃"
+        elseif hostname is "saturn"
+            let g:HostnameSymbol = "♄"
+        elseif hostname is "uranus"
+            let g:HostnameSymbol = "⛢"
+        elseif hostname is "neptune"
+            let g:HostnameSymbol = "♆"
+        elseif hostname is "pluto"
+            let g:HostnameSymbol = "♇"
+        else
+            let g:HostnameSymbol = ""
+        endif
+    endif
+    return g:HostnameSymbol
 endfunction
 
 " Open fzf info in split rather than floating window
