@@ -228,6 +228,11 @@ endfunction
 " Open fzf info in split rather than floating window
 let g:fzf_layout = { 'down': '~40%' }
 
+" Use '-' rather than '_' for git gutter diff
+let g:signify_sign_delete = '-'
+" Use ,g to reset git changes
+nnoremap <leader>g :SignifyHunkUndo<CR>
+
 " Commenting codes for commentary.vim:
 autocmd FileType python setlocal commentstring=#\ %s
 autocmd FileType ruby setlocal commentstring=#\ %s
