@@ -68,7 +68,7 @@ vnoremap B ^
 nnoremap E $
 vnoremap E $
 
-" J/K changes tabs
+" J/K changes buffers
 nnoremap J :bp<CR>
 nnoremap K :bn<CR>
 
@@ -191,9 +191,9 @@ function! Current_git_branch()
     return ""
 endfunction
 
-" Function to format current time as DOW DD MM YYYY HH:MM:SS PM TZ
+" Function to format current time as DOW DD MM YYYY HH:MM:SS TZ
 function! Current_time()
-    return strftime("%c")
+    return strftime("%a %d %b %Y %T %Z")
 endfunction
 
 " Function to grab the planetary symbol based on hostname
