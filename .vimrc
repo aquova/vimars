@@ -225,6 +225,9 @@ function! Hostname_symbol()
     return g:HostnameSymbol
 endfunction
 
+" Stop indentLine from changing the conceallevel
+let g:indentLine_setConceal = 0
+
 " Open fzf info in split rather than floating window
 let g:fzf_layout = { 'down': '~40%' }
 
@@ -250,6 +253,7 @@ autocmd FileType asm setlocal commentstring=;\ %s
 autocmd FileType sh setlocal commentstring=#\ %s
 autocmd FileType applescript setlocal commentstring=--\ %s
 autocmd FileType rust setlocal commentstring=//\ %s
+autocmd FileType nim setlocal commentstring=#\ %s
 
 " Set syntax highlighting for unknown file extension
 autocmd BufNewFile,BufRead *.p8 set syntax=lua
