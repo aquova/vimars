@@ -1,10 +1,11 @@
 #!/bin/bash
 
 # ViMars installation for Unix-based OSes
-# Austin Bricker, 2018-2021
+# Austin Bricker, 2018-2022
 
 PLUGINS=(
     'ajh17/VimCompletesMe'
+    'alvan/vim-closetag'
     'aquova/vim-pico8-syntax'
     'easymotion/vim-easymotion'
     'itchyny/lightline.vim'
