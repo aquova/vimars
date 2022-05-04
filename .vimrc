@@ -236,6 +236,9 @@ let g:signify_sign_delete = '-'
 " Use ,g to reset git changes
 nnoremap <leader>g :SignifyHunkUndo<CR>
 
+" vim-closetag config
+let g:closetag_filetypes = 'html, xhtml, phtml, php'
+
 " Commenting codes for commentary.vim:
 autocmd FileType python setlocal commentstring=#\ %s
 autocmd FileType ruby setlocal commentstring=#\ %s
