@@ -270,5 +270,6 @@ autocmd FileType pico8 setlocal shiftwidth=1 tabstop=1 softtabstop=1
 autocmd FileType make setlocal noexpandtab
 
 " Turn off indentLine for markdown and json as it overrides conceallevel
+autocmd FileType dockerfile let g:indentLine_enabled=0
 autocmd FileType markdown let g:indentLine_enabled=0
 autocmd FileType json let g:indentLine_enabled=0
