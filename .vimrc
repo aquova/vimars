@@ -1,5 +1,5 @@
 " ViMars vimrc
-" Austin Bricker, 2017-2021
+" Austin Bricker, 2017-2022
 
 set background=dark
 " Neovim doesn't support 'term' and will throw an error
@@ -121,12 +121,6 @@ fun! RemoveWhitespace()
     %s/\s\+$//e
     call winrestview(l:save)
 endfun
-
-" Can remove whitespace by calling ':RemoveWhitespace'
-command! RemoveWhitespace call RemoveWhitespace
-
-" Can call RemoveWhitespace with Leader-w
-:noremap <Leader>w :call RemoveWhitespace()<CR>
 
 " Calls RemoveWhitespace when buffer is written
 autocmd BufWritePre * :call RemoveWhitespace()
