@@ -7,6 +7,7 @@ PLUGINS=(
     'ajh17/VimCompletesMe'
     'alvan/vim-closetag'
     'aquova/vim-pico8-syntax'
+    'dense-analysis/ale'
     'easymotion/vim-easymotion'
     'itchyny/lightline.vim'
     'jiangmiao/auto-pairs'

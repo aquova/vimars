@@ -233,6 +233,10 @@ nnoremap <leader>g :SignifyHunkUndo<CR>
 " vim-closetag config
 let g:closetag_filetypes = 'html, xhtml, phtml, php'
 
+" ALE config
+nnoremap [a :ALEPrevious<CR>
+nnoremap ]a :ALENext<CR>
+
 " Commenting codes for commentary.vim:
 autocmd FileType python setlocal commentstring=#\ %s
 autocmd FileType ruby setlocal commentstring=#\ %s
