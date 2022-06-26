@@ -1,75 +1,65 @@
 # vimars
 
-My personal Vim configuration and setup scripts, now with a cute repo name.
+My personal Neovim configuration and setup scripts, now with a cute repo name.
 
 https://github.com/aquova/vimars
 
 ## Overview
 
-Installation scripts for the my Vim configuration. Installs lightweight plugins, colorscheme, and optimal settings.
-
-There are no outside dependencies other than Vim/Neovim, all included plugins are chosen for their light weight and ease of installation.
+Installation scripts for my Neovim configuration. Installs lightweight plugins, colorscheme, and optimal settings.
 
 ## Installation
 
-These scripts do not actually install Vim/Neovim, you will need to do that yourself. Visit https://vim.org for more information.
-
-### Mac/Linux
+These scripts do not actually install Neovim, you will need to do that yourself. Visit https://neovim.io for more information.
 
 Run `./vim_install.sh`. The script will create the necessary folder structure and install the plugins and colorschemes into their correct places. The script assumes you have `git` installed.
-
-### Windows PowerShell
-
-Run the `win_install.ps1` script via PowerShell. Requires git to be installed. By default, the script assumes that the Vim home directory is `C:\Users\USERNAME`. This can be confirmed by running `:echo $HOME` within Vim, and changing the `$VIM_DIR` variable if this is not the case. Note that I am not a Windows user, and thus this script is not always kept up to date.
 
 ## Contents
 
 ### Configuration file overview
 
-- `.vimrc` is the settings file for Vim, which is also inherited by Neovim
-- `.gvimrc` is the settings file for gVim, aka running Vim as a standalone GUI program.
-- `init.vim` is the settings file for Neovim.
-- `ginit.vim` is the settings file for standalone Neovim GUI programs.
+- `init.lua` is the settings file for Neovim.
 
 ### Featured Plugins
 
-- [Auto Pairs](https://github.com/jiangmiao/auto-pairs)
-    - Automatically adds matching [({})] when typed.
-- [fzf](https://github.com/junegunn/fzf.vim)
-    - Built-in fzf support.
-- [Highlighted Yank](https://github.com/machakann/vim-highlightedyank)
-    - Briefly highlights selection when yanked
-- [Lightline](https://github.com/itchyny/lightline.vim)
-    - Minimalistic status bar support
-- [Lightline Bufferline](https://github.com/mengelbrecht/lightline-bufferline)
-    - Extension to Lightline that adds a top bar with buffer names
-- [Nim Syntax](https://github.com/zah/nim.vim)
-    - Adds syntax support for the Nim programming language
-- [Pico-8 Syntax](https://github.com/aquova/vim-pico8-syntax)
-    - Adds syntax support for Pico-8's flavor of Lua.
-- [Vim Commentary](https://github.com/tpope/vim-commentary)
-    - Adds keybindings for commenting code
 - [VimCompletesMe](https://github.com/ajh17/VimCompletesMe)
-    - Autocompletion based on previously typed words. Entirely in Vimscript.
-- [Vim Easymotion](https://github.com/easymotion/vim-easymotion)
-    - Additional keybinds for navigation.
-- [Vim Fugitive](https://github.com/tpope/vim-fugitive)
-    - Increased git integration from within Vim
-- [Vim Indentline](https://github.com/Yggdroot/indentLine)
-    - Adds small visual indicators for each tab
-- [Vim Repeat](https://github.com/tpope/vim-repeat)
-    - Allows for repeated behavior with the `.` key
-- [Vim Signify](https://github.com/mhinz/vim-signify)
-    - Adds git change symbols to sidebar
-- [Vim Surround](https://github.com/tpope/vim-surround)
-    - Adds keybinds for surrounding selections with characters
-- [Vim Unimpaired](https://github.com/tpope/vim-unimpaired)
-    - Adds miscelaneous selection of useful keybindings
-
-### Neovim-only plugins
-
+    - Autocompletion based on previously typed words.
+- [Vim Closetag](https://github.com/alvan/vim-closetag)
+    - Auto-closes HTML tags
 - [ToggleTerm](https://github.com/akinsho/toggleterm.nvim)
     - Improved terminal from within Neovim
+- [Pico-8 Syntax](https://github.com/aquova/vim-pico8-syntax)
+    - Adds syntax support for Pico-8's flavor of Lua.
+- [ALE](https://github.com/dense-analysis/ale)
+    - Linting support
+- [Auto Pairs](https://github.com/jiangmiao/auto-pairs)
+    - Automatically adds matching [({})] when typed.
+- [Neovim Tree](https://github.com/kyazdani42/nvim-tree.lua)
+    - Neovim file explorer
+- [Neovim Web Devicons](https://github.com/kyazdani42/nvim-web-devicons)
+    - Development icons for Neovim
+- [Indent Blankline](https://github.com/lukas-reineke/indent-blankline.nvim)
+    - Adds indentation guides
+- [Vim Signify](https://github.com/mhinz/vim-signify)
+    - Adds git change symbols to sidebar
+- [Lua Line](https://github.com/nvim-lualine/lualine.nvim/)
+    - Neovim statusline support
+- [Telescope](https://github.com/nvim-telescope/telescope.nvim)
+    - Fuzzy finder
+- [Hop](https://github.com/phaazon/hop.nvim)
+    - Easymotion-like navigation plugin
+- [Barbar](https://github.com/romgrk/barbar.nvim)
+    - Neovim tabline support
+- [Vim Polyglot](https://github.com/sheerun/vim-polyglot)
+    - Additional syntax support
+- [Vim Commentary](https://github.com/tpope/vim-commentary)
+    - Adds keybindings for commenting code
+- [Vim Fugitive](https://github.com/tpope/vim-fugitive)
+    - Increased git integration from within Vim
+- [Vim Repeat](https://github.com/tpope/vim-repeat)
+    - Allows for repeated behavior with the `.` key
+- [Vim Surround](https://github.com/tpope/vim-surround)
+    - Adds keybinds for surrounding selections with characters
 
 ### Featured colorscheme
 
