@@ -5,6 +5,24 @@ require("toggleterm").setup{
     direction = 'float'
 }
 
+require("lualine").setup{
+    options = {
+        icons_enabled = true,
+        theme = 'onedark',
+        section_separators = '',
+        component_separators = '',
+    },
+    sections = {
+        lualine_a = {'mode'},
+        lualine_b = {'branch'},
+        lualine_c = {'diff'},
+        lualine_x = {'progress', 'location'},
+        lualine_y = {'fileformat', 'encoding'},
+        lualine_z = {'filetype', 'filename'},
+    },
+    tabline = {},
+    extensions = {},
+}
 
 local set = vim.opt
 set.background = "dark"
@@ -20,15 +38,12 @@ set.foldmethod = "indent"
 set.hidden = true
 set.hlsearch = true
 set.incsearch = true
-set.laststatus = 2
 set.lazyredraw = true
 set.mouse = "a"
 set.number = true
 set.shiftwidth = 4
 set.showcmd = true
 set.showmatch = true
-set.showtabline = 2
-set.showmode = false
 set.splitbelow = true
 set.splitright = true
 set.softtabstop = 4
@@ -108,72 +123,3 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     pattern = { "*" },
     command = [[%s/\s\+$//e]],
 })
-
-vim.cmd([[
-let g:lightline = {
-\   'colorscheme': 'one',
-\   'active': {
-\       'left': [ [ 'mode', 'paste' ],
-\                 [ 'time' ],
-\                 [ 'readonly', 'filename', 'modified'] ],
-\       'right': [ [ 'percent', 'lineinfo' ],
-\                  [ 'gitbranch' ],
-\                  [ 'fileformat', 'fileencoding', 'filetype' ] ],
-\   },
-\   'tabline': {
-\       'left': [ [ 'buffers' ] ],
-\       'right': [ [ 'sym' ] ]
-\   },
-\   'component_function': {
-\       'gitbranch' : 'Current_git_branch',
-\       'time' : 'Current_time',
-\       'sym' : 'Hostname_symbol'
-\   },
-\   'component_expand': {
-\       'buffers': 'lightline#bufferline#buffers'
-\   },
-\   'component_type': {
-\       'buffers': 'tabsel'
-\   }
-\ }
-
-function! Current_git_branch()
-    let l:branch = split(fugitive#statusline(), '[()]')
-    if len(l:branch) > 1
-        return remove(l:branch, 1)
-    endif
-    return ""
-endfunction
-
-function! Current_time()
-    return strftime("%a %d %b %Y %T %Z")
-endfunction
-
-function! Hostname_symbol()
-    if !exists("g:HostnameSymbol")
-        let hostname = hostname()
-        if hostname is "mercury"
-            let g:HostnameSymbol = "☿"
-        elseif hostname is "venus"
-            let g:HostnameSymbol = "♀"
-        elseif hostname is "earth"
-            let g:HostnameSymbol = "🜨"
-        elseif hostname is "mars"
-            let g:HostnameSymbol = "♂"
-        elseif hostname is "jupiter"
-            let g:HostnameSymbol = "♃"
-        elseif hostname is "saturn"
-            let g:HostnameSymbol = "♄"
-        elseif hostname is "uranus"
-            let g:HostnameSymbol = "⛢"
-        elseif hostname is "neptune"
-            let g:HostnameSymbol = "♆"
-        elseif hostname is "pluto"
-            let g:HostnameSymbol = "♇"
-        else
-            let g:HostnameSymbol = ""
-        endif
-    endif
-    return g:HostnameSymbol
-endfunction
-]])
