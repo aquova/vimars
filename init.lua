@@ -109,6 +109,9 @@ vnomap("<tab>", "%")
 nnomap("Y", "y$")
 vnomap("Y", "y$")
 
+nnomap("[<space>", "O<esc>j")
+nnomap("]<space>", "o<esc>k")
+
 nnomap("<leader>g", ":SignifyHunkUndo<CR>")
 
 nnomap("<C-t>", ":ToggleTerm<CR>")
