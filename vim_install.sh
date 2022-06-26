@@ -13,10 +13,11 @@ PLUGINS=(
     'itchyny/lightline.vim'
     'jiangmiao/auto-pairs'
     'junegunn/fzf.vim' # Requires fzf installed
+    'kyazdani42/nvim-web-devicons'
     'lukas-reineke/indent-blankline.nvim'
     'machakann/vim-highlightedyank'
-    'mengelbrecht/lightline-bufferline'
     'mhinz/vim-signify'
+    'romgrk/barbar.nvim'
     'sheerun/vim-polyglot'
     'tommcdo/vim-lion'
     'tpope/vim-commentary'
