@@ -11,13 +11,14 @@ PLUGINS=(
     'dense-analysis/ale'
     'easymotion/vim-easymotion'
     'jiangmiao/auto-pairs'
-    'junegunn/fzf.vim' # Requires fzf installed
     'kyazdani42/nvim-tree.lua'
     'kyazdani42/nvim-web-devicons'
     'lukas-reineke/indent-blankline.nvim'
     'machakann/vim-highlightedyank'
     'mhinz/vim-signify'
+    'nvim-lua/plenary.nvim'
     'nvim-lualine/lualine.nvim'
+    'nvim-telescope/telescope.nvim'
     'romgrk/barbar.nvim'
     'sheerun/vim-polyglot'
     'tommcdo/vim-lion'
@@ -51,4 +52,3 @@ echo "Moving configuration files into place";
 cp init.lua $NVIMDIR;
 
 echo "Your Neovim installation is complete. Enjoy!";
-echo "For maximum utilization, ensure that fzf and ripgrep are both installed."

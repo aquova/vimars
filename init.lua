@@ -119,7 +119,11 @@ nnomap("]a", ":ALENext<CR>")
 
 nnomap("<leader>t", ":NvimTreeToggle<CR>")
 
-vim.g.fzf_layout = "{ 'down': '~40%' }"
+nnomap("<leader>sg", ":Telescope live_grep<CR>")
+nnomap("<leader>sf", ":Telescope find_files<CR>")
+nnomap("<leader>sz", ":Telescope spell_suggest<CR>")
+nnomap("<leader>sm", ":Telescope man_pages<CR>")
+
 vim.g.signify_sign_delete = '-'
 vim.g.closetag_filetypes = 'html, xhtml, phtml, php'
 
