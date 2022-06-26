@@ -129,6 +129,7 @@ nnomap("<leader>sz", ":Telescope spell_suggest<CR>")
 nnomap("<leader>sm", ":Telescope man_pages<CR>")
 
 nnomap("<leader><leader>w", ":HopWord<CR>")
+nnomap("<leader><leader>b", ":HopWord<CR>")
 nnomap("<leader><leader>f", ":HopChar1<CR>")
 nnomap("<leader><leader>j", ":HopLine<CR>")
 nnomap("<leader><leader>k", ":HopLine<CR>")
