@@ -141,3 +141,11 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     pattern = { "*" },
     command = [[%s/\s\+$//e]],
 })
+
+-- TODO: Figure out if this can be done with just Lua
+vim.cmd([[
+augroup highlight_yank
+autocmd!
+au TextYankPost * silent! lua require'vim.highlight'.on_yank({hlgroup="IncSearch", timeout=1000})
+augroup END
+]])
