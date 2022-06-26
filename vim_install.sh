@@ -12,6 +12,7 @@ PLUGINS=(
     'easymotion/vim-easymotion'
     'jiangmiao/auto-pairs'
     'junegunn/fzf.vim' # Requires fzf installed
+    'kyazdani42/nvim-tree.lua'
     'kyazdani42/nvim-web-devicons'
     'lukas-reineke/indent-blankline.nvim'
     'machakann/vim-highlightedyank'

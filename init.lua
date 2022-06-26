@@ -1,6 +1,8 @@
 -- Vimars init.lua
 -- Austin Bricker, 2017-2022
 
+require("nvim-tree").setup()
+
 require("toggleterm").setup{
     direction = 'float'
 }
@@ -114,6 +116,8 @@ tnomap("<C-t>", "<C-\\><C-N>:ToggleTerm<CR>")
 
 nnomap("[a", ":ALEPrevious<CR>")
 nnomap("]a", ":ALENext<CR>")
+
+nnomap("<leader>t", ":NvimTreeToggle<CR>")
 
 vim.g.fzf_layout = "{ 'down': '~40%' }"
 vim.g.signify_sign_delete = '-'
