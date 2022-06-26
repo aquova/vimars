@@ -1,120 +1,104 @@
 -- Vimars init.lua
 -- Austin Bricker, 2017-2022
 
+local set = vim.opt
+
+set.background = "dark"
+set.backspace = "2"
+set.breakindent = true
+set.cursorline = true
+set.conceallevel = 0
+set.diffopt = "vertical"
+set.encoding = "utf-8"
+set.expandtab = true
+set.foldlevel = 99
+set.foldmethod = "indent"
+set.hidden = true
+set.hlsearch = true
+set.incsearch = true
+set.laststatus = 2
+set.lazyredraw = true
+set.mouse = "a"
+set.number = true
+set.shiftwidth = 4
+set.showcmd = true
+set.showmatch = true
+set.showtabline = 2
+set.showmode = false
+set.splitbelow = true
+set.splitright = true
+set.softtabstop = 4
+set.startofline = false
+set.tabstop = 4
+set.timeout = false
+set.wildmenu = true
+
+vim.g.mapleader = ","
+
 vim.cmd([[
-set runtimepath^=~/.vim runtimepath+=~/.vim/after
-let &packpath=&runtimepath
+syntax enable
+colorscheme onedark
+filetype indent on
 ]])
 
+function map(mode, shortcut, cmd)
+    vim.api.nvim_set_keymap(mode, shortcut, cmd, { noremap = true, silent = true })
+end
+
+function nnomap(shortcut, cmd)
+    map('n', shortcut, cmd)
+end
+
+function inomap(shortcut, cmd)
+    map('i', shortcut, cmd)
+end
+
+function vnomap(shortcut, cmd)
+    map('v', shortcut, cmd)
+end
+
+nnomap("<space>", "za")
+nnomap("j", "gj")
+nnomap("k", "gk")
+
+nnomap("B", "^")
+vnomap("B", "^")
+nnomap("E", "$")
+vnomap("E", "$")
+
+nnomap("J", ":bp<CR>")
+nnomap("K", ":bn<CR>")
+nnomap("gJ", "J<CR>")
+inomap("jk", "<esc>")
+
+nnomap("L", "L<bar>zz<CR>")
+vnomap("L", "L<bar>zz<CR>")
+nnomap("H", "H<bar>zz<CR>")
+vnomap("H", "H<bar>zz<CR>")
+
+nnomap("<leader><space>", ":noh<CR>")
+
+nnomap("<tab>", "%")
+vnomap("<tab>", "%")
+
+nnomap("Y", "y$")
+vnomap("Y", "y$")
+
+nnomap("<leader>g", ":SignifyHunkUndo<CR>")
+
+nnomap("[a", ":ALEPrevious<CR>")
+nnomap("]a", ":ALENext<CR>")
+
+vim.g.fzf_layout = "{ 'down': '~40%' }"
+vim.g.signify_sign_delete = '-'
+vim.g.closetag_filetypes = 'html, xhtml, phtml, php'
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = { "*" },
+    command = [[%s/\s\+$//e]],
+})
+
 vim.cmd([[
-set background=dark
-colorscheme onedark
-syntax enable           
-set encoding=utf-8
-
-set tabstop=4           
-set softtabstop=4       
-set shiftwidth=4        
-set expandtab           
-set breakindent         
-
-set number              
-set showcmd             
-
-set cursorline          
-filetype indent on      
-
-set wildmenu            
-set lazyredraw          
-
-set showmatch           
-
-set incsearch           
-set hlsearch            
-
-set hidden              
-set nostartofline       
-
-set mouse=a             
-set backspace=2         
-set conceallevel=0      
-set notimeout           
-
-set splitright          
-set splitbelow          
-
-set guioptions=         
-
-set diffopt=vertical    
-
-set foldmethod=indent   
-set foldlevel=99
-
-set noerrorbells visualbell t_vb=
-autocmd GUIEnter * set visualbell t_vb=
-
-nnoremap <space> za
-
-nnoremap j gj
-nnoremap k gk
-
-nnoremap B ^
-vnoremap B ^
-nnoremap E $
-vnoremap E $
-
-nnoremap J :bp<CR>
-nnoremap K :bn<CR>
-
-nnoremap gJ J <CR>
-
-inoremap jk <esc>
-
-let mapleader=","
-
-nnoremap <leader>sv :source $MYVIMRC<CR>
-
-nnoremap L L<bar>zz <CR>
-vnoremap L L<bar>zz <CR>
-nnoremap H H<bar>zz <CR>
-vnoremap H H<bar>zz <CR>
-
-nnoremap <leader><space> :noh<CR>
-
-nnoremap <tab> %
-vnoremap <tab> %
-
-nnoremap Y y$
-vnoremap Y y$
-
-command! Bd bp|bd #
-
-fun! RemoveWhitespace()
-    let l:save = winsaveview()
-    %s/\s\+$//e
-    call winrestview(l:save)
-endfun
-
-autocmd BufWritePre * :call RemoveWhitespace()
-
-if exists('$TMUX')
-    let &t_SI = "\<Esc>Ptmux;\<Esc>\e[6 q\<Esc>\\"
-    let &t_EI = "\<Esc>Ptmux;\<Esc>\e[1 q\<Esc>\\"
-    let &t_SR = "\<Esc>Ptmux;\<Esc>\e[4 q\<Esc>\\"
-else
-    let &t_SI = "\e[6 q" 
-    let &t_EI = "\e[1 q" 
-    let &t_SR = "\e[4 q" 
-endif
-
-augroup myCmds
-au!
-autocmd VimEnter * silent !echo -ne "\e[1 q"
-augroup END
-
-set laststatus=2        
-set showtabline=2       
-set noshowmode          
 let g:lightline = {
 \   'colorscheme': 'one',
 \   'active': {
@@ -181,47 +165,4 @@ function! Hostname_symbol()
     endif
     return g:HostnameSymbol
 endfunction
-
-let g:indentLine_setConceal = 0
-
-let g:fzf_layout = { 'down': '~40%' }
-
-let g:signify_sign_delete = '-'
-nnoremap <leader>g :SignifyHunkUndo<CR>
-
-let g:closetag_filetypes = 'html, xhtml, phtml, php'
-
-nnoremap [a :ALEPrevious<CR>
-nnoremap ]a :ALENext<CR>
-
-autocmd FileType python setlocal commentstring=#\ %s
-autocmd FileType ruby setlocal commentstring=#\ %s
-autocmd FileType html setlocal commentstring=<!--\ %s\ -->
-autocmd FileType vim setlocal commentstring=\--\ %s
-autocmd FileType javascript setlocal commentstring=//\ %s
-autocmd FileType cpp setlocal commentstring=//\ %s
-autocmd FileType htmldjango setlocal commentstring=<!--\ %s\ -->
-autocmd FileType pico8 setlocal commentstring=--\ %s
-autocmd FileType lua setlocal commentstring=--\ %s
-autocmd FileType arduino setlocal commentstring=//\ %s
-autocmd FileType make setlocal commentstring=#\ %s
-autocmd FileType coffee setlocal commentstring=#\ %s
-autocmd FileType asm setlocal commentstring=;\ %s
-autocmd FileType sh setlocal commentstring=#\ %s
-autocmd FileType applescript setlocal commentstring=--\ %s
-autocmd FileType rust setlocal commentstring=//\ %s
-autocmd FileType nim setlocal commentstring=#\ %s
-
-autocmd BufNewFile,BufRead *.p8 set syntax=lua
-autocmd BufNewFile,BufRead *.tic set syntax=lua
-autocmd BufNewFile,BufRead *.command set syntax=sh
-autocmd BufNewFile,BufRead *.cr set syntax=ruby
-
-autocmd FileType nim setlocal shiftwidth=4 tabstop=4 softtabstop=4
-autocmd FileType pico8 setlocal shiftwidth=1 tabstop=1 softtabstop=1
-autocmd FileType make setlocal noexpandtab
-
-autocmd FileType dockerfile let g:indentLine_enabled=0
-autocmd FileType markdown let g:indentLine_enabled=0
-autocmd FileType json let g:indentLine_enabled=0
 ]])
