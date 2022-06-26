@@ -1,8 +1,12 @@
 -- Vimars init.lua
 -- Austin Bricker, 2017-2022
 
-local set = vim.opt
+require("toggleterm").setup{
+    direction = 'float'
+}
 
+
+local set = vim.opt
 set.background = "dark"
 set.backspace = "2"
 set.breakindent = true
@@ -57,6 +61,10 @@ function vnomap(shortcut, cmd)
     map('v', shortcut, cmd)
 end
 
+function tnomap(shortcut, cmd)
+    map('t', shortcut, cmd)
+end
+
 nnomap("<space>", "za")
 nnomap("j", "gj")
 nnomap("k", "gk")
@@ -85,6 +93,9 @@ nnomap("Y", "y$")
 vnomap("Y", "y$")
 
 nnomap("<leader>g", ":SignifyHunkUndo<CR>")
+
+nnomap("<C-t>", ":ToggleTerm<CR>")
+tnomap("<C-t>", "<C-\\><C-N>:ToggleTerm<CR>")
 
 nnomap("[a", ":ALEPrevious<CR>")
 nnomap("]a", ":ALENext<CR>")
