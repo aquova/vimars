@@ -13,6 +13,7 @@ PLUGINS=(
     'itchyny/lightline.vim'
     'jiangmiao/auto-pairs'
     'junegunn/fzf.vim' # Requires fzf installed
+    'lukas-reineke/indent-blankline.nvim'
     'machakann/vim-highlightedyank'
     'mengelbrecht/lightline-bufferline'
     'mhinz/vim-signify'
@@ -23,7 +24,6 @@ PLUGINS=(
     'tpope/vim-repeat'
     'tpope/vim-surround'
     'tpope/vim-unimpaired'
-    'Yggdroot/indentLine'
 )
 
 NVIMDIR=$HOME/.config/nvim;
