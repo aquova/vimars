@@ -1,8 +1,28 @@
-# ViMars installation for Windows via PowerShell
-# Austin Bricker, 2019-2020
+# Vimars installation for Windows via PowerShell
+# Austin Bricker, 2019-2022
 
-# Configs use the "Roboto Mono for Powerline" font, which is not installed as part of this script
-# gVim for Windows can be installed from here: https://www.vim.org/download.php
+$PLUGINS = @(
+    'ajh17/VimCompletesMe'
+    'alvan/vim-closetag'
+    'akinsho/toggleterm.nvim'
+    'aquova/vim-pico8-syntax'
+    'dense-analysis/ale'
+    'jiangmiao/auto-pairs'
+    'kyazdani42/nvim-tree.lua'
+    'kyazdani42/nvim-web-devicons'
+    'lukas-reineke/indent-blankline.nvim'
+    'mhinz/vim-signify'
+    'nvim-lua/plenary.nvim'
+    'nvim-lualine/lualine.nvim'
+    'nvim-telescope/telescope.nvim'
+    'phaazon/hop.nvim'
+    'romgrk/barbar.nvim'
+    'sheerun/vim-polyglot'
+    'tpope/vim-commentary'
+    'tpope/vim-fugitive'
+    'tpope/vim-repeat'
+    'tpope/vim-surround'
+)
 
 # Checks if git is installed
 if ( -Not ( Get-Command git -ErrorAction SilentlyContinue ) ) {
@@ -10,38 +30,31 @@ if ( -Not ( Get-Command git -ErrorAction SilentlyContinue ) ) {
     exit
 }
 
-$USERNAME = $env:UserName
-# This is the default Vim directory (for some reason)
-# This can be confirmed by running ':echo $HOME' within Vim
-$VIM_DIR = "C:\Users\$USERNAME"
+$NVIMDIR = "$HOME\AppData\Local\nvim"
+New-Item -ItemType directory -Path $NVIMDIR             -ErrorAction SilentlyContinue | Out-Null
 
-# Change to Vim directory, putting current directory on stack
-Push-Location "$VIM_DIR"
-New-Item -ItemType directory -Path vimfiles | Out-Null
-Set-Location vimfiles
+Write-Output "Setting up file structure in $NVIMDIR"
+Push-Location "$NVIMDIR"
+New-Item -ItemType directory -Path pack\plugins\start   -ErrorAction SilentlyContinue | Out-Null
+New-Item -ItemType directory -Path autoload             -ErrorAction SilentlyContinue | Out-Null
+New-Item -ItemType directory -Path colors               -ErrorAction SilentlyContinue | Out-Null
 
-Write-Output "Installing Pathogen"
-# Create directories, ignore errors if directory already exists
-New-Item -ItemType directory -Path autoload -ErrorAction SilentlyContinue | Out-Null
-New-Item -ItemType directory -Path bundle   -ErrorAction SilentlyContinue | Out-Null
-New-Item -ItemType directory -Path colors   -ErrorAction SilentlyContinue | Out-Null
-# Install Vundle, place into autoload folder
-git clone --quiet https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim > /dev/null;
+Push-Location "pack\plugins\start"
+Write-Output "Installing plugins"
+foreach ($plugin in $PLUGINS) {
+    Write-Output "Installing $plugin"
+    git clone --quiet "https://github.com/$plugin" | Out-Null
+}
+Pop-Location
 
 Write-Output "Installing colorscheme"
-git clone --quiet https://github.com/joshdick/onedark.vim
+git clone --quiet https://github.com/joshdick/onedark.vim | Out-Null
 Move-Item onedark.vim/colors/onedark.vim colors
 Move-Item onedark.vim/autoload/* autoload
 Remove-Item -Recurse -Force onedark.vim
-
-# Remove pre-existing vimrc, if it exists
-Set-Location $VIM_DIR
-Remove-Item _vimrc -ErrorAction SilentlyContinue
 Pop-Location
 
-Write-Output "Moving vimrc into place"
-Copy-Item ".vimrc" $VIM_DIR
-# Rename vimrc to be for gVim, to not interfere with other shells, like VSCode
-Rename-Item -Path "$VIM_DIR\.vimrc" -NewName "_gvimrc"
+Write-Output "Moving configuration files into place"
+Copy-Item init.lua $NVIMDIR
 
-Write-Output "Complete! Your Vim installation (should) be complete! Enjoy!"
+Write-Output "Your Neovim installation is complete. Enjoy!"
