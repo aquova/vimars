@@ -1,8 +1,14 @@
 -- Vimars init.lua
 -- Austin Bricker, 2017-2022
 
+require("diffview").setup()
 require("hop").setup()
 require("nvim-tree").setup()
+
+require("bufferline").setup{
+    auto_hide = true,
+    insert_at_end = true,
+}
 
 require("toggleterm").setup{
     direction = 'float'
@@ -125,6 +131,7 @@ nnomap("<leader>t", ":NvimTreeToggle<CR>")
 
 nnomap("<leader>sg", ":Telescope live_grep<CR>")
 nnomap("<leader>sf", ":Telescope find_files<CR>")
+nnomap("<leader>sd", ":lua DiffviewToggle()<CR>")
 nnomap("<leader>sz", ":Telescope spell_suggest<CR>")
 nnomap("<leader>sm", ":Telescope man_pages<CR>")
 
@@ -150,3 +157,15 @@ autocmd!
 au TextYankPost * silent! lua require'vim.highlight'.on_yank({hlgroup="IncSearch", timeout=1000})
 augroup END
 ]])
+
+-- Custom function to add toggle functionality to diffview.nvim
+local last_tabpage = vim.api.nvim_get_current_tabpage()
+function DiffviewToggle()
+    local lib = require("diffview.lib")
+    local view = lib.get_current_view()
+    if view then
+        vim.cmd(":DiffviewClose")
+    else
+        vim.cmd(":DiffviewOpen")
+    end
+end

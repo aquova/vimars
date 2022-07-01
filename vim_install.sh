@@ -20,8 +20,8 @@ PLUGINS=(
     'phaazon/hop.nvim'
     'romgrk/barbar.nvim'
     'sheerun/vim-polyglot'
+    'sindrets/diffview.nvim'
     'tpope/vim-commentary'
-    'tpope/vim-fugitive'
     'tpope/vim-repeat'
     'tpope/vim-surround'
 )
