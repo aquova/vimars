@@ -169,3 +169,9 @@ function DiffviewToggle()
         vim.cmd(":DiffviewOpen")
     end
 end
+
+-- Set vim-commentary values
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "nim" },
+    command = "setlocal commentstring=#\\ %s"
+})
