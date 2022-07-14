@@ -129,9 +129,9 @@ nnomap("]a", ":ALENext<CR>")
 
 nnomap("<leader>t", ":NvimTreeToggle<CR>")
 
-nnomap("<leader>sg", ":Telescope live_grep<CR>")
-nnomap("<leader>sf", ":Telescope find_files<CR>")
-nnomap("<leader>sd", ":lua DiffviewToggle()<CR>")
+nnomap("<leader>sf", ":Telescope live_grep<CR>")
+nnomap("<C-p>",      ":Telescope find_files<CR>")
+nnomap("<leader>sg", ":lua DiffviewToggle()<CR>")
 nnomap("<leader>sz", ":Telescope spell_suggest<CR>")
 nnomap("<leader>sm", ":Telescope man_pages<CR>")
 
