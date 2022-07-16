@@ -135,11 +135,11 @@ nnomap("<leader>sg", ":lua DiffviewToggle()<CR>")
 nnomap("<leader>sz", ":Telescope spell_suggest<CR>")
 nnomap("<leader>sm", ":Telescope man_pages<CR>")
 
-nnomap("<leader><leader>w", ":HopWord<CR>")
-nnomap("<leader><leader>b", ":HopWord<CR>")
+nnomap("<leader><leader>w", ":HopWordAC<CR>")
+nnomap("<leader><leader>b", ":HopWordBC<CR>")
 nnomap("<leader><leader>f", ":HopChar1<CR>")
-nnomap("<leader><leader>j", ":HopLine<CR>")
-nnomap("<leader><leader>k", ":HopLine<CR>")
+nnomap("<leader><leader>j", ":HopLineStartAC<CR>")
+nnomap("<leader><leader>k", ":HopLineStartBC<CR>")
 nnomap("<leader><leader>/", ":HopPattern<CR>")
 
 vim.g.signify_sign_delete = '-'
