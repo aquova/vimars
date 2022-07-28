@@ -137,6 +137,7 @@ nnomap("<leader>sm", ":Telescope man_pages<CR>")
 
 nnomap("<leader><leader>w", ":HopWordAC<CR>")
 nnomap("<leader><leader>b", ":HopWordBC<CR>")
+nnomap("<leader><leader>e", ":lua HopEndWord()<CR>")
 nnomap("<leader><leader>f", ":HopChar1<CR>")
 nnomap("<leader><leader>j", ":HopLineStartAC<CR>")
 nnomap("<leader><leader>k", ":HopLineStartBC<CR>")
@@ -168,6 +169,13 @@ function DiffviewToggle()
     else
         vim.cmd(":DiffviewOpen")
     end
+end
+
+-- Custom function to allow jumping to ends of words
+function HopEndWord()
+    local hop = require("hop")
+    local hint = require("hop.hint")
+    hop.hint_words({hint_position = hint.HintPosition.END})
 end
 
 -- Set vim-commentary values
