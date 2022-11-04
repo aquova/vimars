@@ -133,11 +133,11 @@ nnomap("]a", ":ALENext<CR>")
 
 nnomap("<leader>t", ":NvimTreeToggle<CR>")
 
-nnomap("<leader>sf", ":Telescope live_grep<CR>")
+nnomap("<leader>f", ":Telescope live_grep<CR>")
 nnomap("<C-p>",      ":Telescope find_files<CR>")
-nnomap("<leader>sg", ":lua DiffviewToggle()<CR>")
-nnomap("<leader>sz", ":Telescope spell_suggest<CR>")
-nnomap("<leader>sm", ":Telescope man_pages<CR>")
+nnomap("<leader>d", ":lua DiffviewToggle()<CR>")
+nnomap("<leader>z", ":Telescope spell_suggest<CR>")
+nnomap("<leader>m", ":Telescope man_pages<CR>")
 
 nnomap("<leader><leader>w", ":HopWordAC<CR>")
 nnomap("<leader><leader>b", ":HopWordBC<CR>")
@@ -150,6 +150,7 @@ nnomap("<leader><leader>/", ":HopPattern<CR>")
 vim.g.signify_sign_delete = '-'
 vim.g.closetag_filetypes = 'html, xhtml, phtml, php'
 
+-- Strip trailing whitespace
 vim.api.nvim_create_autocmd("BufWritePre", {
     pattern = { "*" },
     command = [[%s/\s\+$//e]],
