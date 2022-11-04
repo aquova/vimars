@@ -8,6 +8,7 @@ PLUGINS=(
     'alvan/vim-closetag'
     'akinsho/toggleterm.nvim'
     'aquova/vim-pico8-syntax'
+    'chentoast/marks.nvim'
     'dense-analysis/ale'
     'jiangmiao/auto-pairs'
     'kyazdani42/nvim-tree.lua'

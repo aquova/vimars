@@ -14,6 +14,10 @@ require("toggleterm").setup{
     direction = 'float'
 }
 
+require("marks").setup{
+    builtin_marks = { ".", "<", ">", "^", "'" }
+}
+
 require("lualine").setup{
     options = {
         icons_enabled = true,
