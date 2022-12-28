@@ -130,6 +130,7 @@ tnomap("<C-t>", "<C-\\><C-N>:ToggleTerm<CR>")
 
 nnomap("[a", ":ALEPrevious<CR>")
 nnomap("]a", ":ALENext<CR>")
+nnomap("gh", ":ALEDetail<CR>")
 
 nnomap("<leader>t", ":NvimTreeToggle<CR>")
 
@@ -149,6 +150,7 @@ nnomap("<leader><leader>/", ":HopPattern<CR>")
 
 vim.g.signify_sign_delete = '-'
 vim.g.closetag_filetypes = 'html, xhtml, phtml, php'
+vim.g.ale_floating_preview = 1
 
 -- Strip trailing whitespace
 vim.api.nvim_create_autocmd("BufWritePre", {
@@ -180,7 +182,7 @@ end
 function HopEndWord()
     local hop = require("hop")
     local hint = require("hop.hint")
-    hop.hint_words({hint_position = hint.HintPosition.END})
+    hop.hint_words({direction = hint.HintDirection.AFTER_CURSOR, hint_position = hint.HintPosition.END})
 end
 
 -- Set vim-commentary values
