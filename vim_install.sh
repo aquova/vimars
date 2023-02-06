@@ -1,7 +1,8 @@
 #!/bin/bash
 
-# Vimars installation for Unix-based OSes
-# Austin Bricker, 2018-2022
+# Vimars installation bash script
+# Requires git to be installed
+# Austin Bricker, 2018-2023
 
 PLUGINS=(
     'ajh17/VimCompletesMe'
@@ -23,6 +24,7 @@ PLUGINS=(
     'sheerun/vim-polyglot'
     'sindrets/diffview.nvim'
     'tpope/vim-commentary'
+    'tpope/vim-fugitive'
     'tpope/vim-repeat'
     'tpope/vim-surround'
 )
