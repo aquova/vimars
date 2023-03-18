@@ -16,6 +16,7 @@ PLUGINS=(
     'kyazdani42/nvim-web-devicons'
     'lukas-reineke/indent-blankline.nvim'
     'mhinz/vim-signify'
+    'navarasu/onedark.nvim'
     'nvim-lua/plenary.nvim'
     'nvim-lualine/lualine.nvim'
     'nvim-telescope/telescope.nvim'
@@ -32,20 +33,13 @@ PLUGINS=(
 NVIMDIR=$HOME/.config/nvim;
 
 echo "Installing Neovim plugins";
-mkdir -p $NVIMDIR/pack/plugins/start $NVIMDIR/colors $NVIMDIR/autoload;
+mkdir -p $NVIMDIR/pack/plugins/start
 pushd $NVIMDIR/pack/plugins/start > /dev/null;
 for pkg in "${PLUGINS[@]}"; do
     echo "Installing $pkg";
     git clone --quiet https://github.com/$pkg &> /dev/null;
 done
 popd > /dev/null;
-echo "";
-
-echo "Installing colorscheme";
-git clone --quiet https://github.com/joshdick/onedark.vim &> /dev/null;
-mv onedark.vim/colors/onedark.vim $NVIMDIR/colors 2> /dev/null;
-mv onedark.vim/autoload/* $NVIMDIR/autoload 2> /dev/null;
-rm -rf onedark.vim;
 echo "";
 
 echo "Moving configuration files into place";

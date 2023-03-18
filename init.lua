@@ -21,7 +21,6 @@ require("marks").setup{
 require("lualine").setup{
     options = {
         icons_enabled = true,
-        theme = 'onedark',
         section_separators = '',
         component_separators = '',
     },
@@ -36,6 +35,11 @@ require("lualine").setup{
     tabline = {},
     extensions = {},
 }
+
+require('onedark').setup {
+    style = 'darker'
+}
+require('onedark').load()
 
 local set = vim.opt
 set.background = "dark"
@@ -69,7 +73,6 @@ vim.g.mapleader = ","
 
 vim.cmd([[
 syntax enable
-colorscheme onedark
 filetype indent on
 ]])
 
