@@ -5,17 +5,15 @@
 # Austin Bricker, 2018-2023
 
 PLUGINS=(
-    'ajh17/VimCompletesMe'
     'alvan/vim-closetag'
     'akinsho/toggleterm.nvim'
     'aquova/vim-pico8-syntax'
     'chentoast/marks.nvim'
-    'dense-analysis/ale'
     'jiangmiao/auto-pairs'
     'kyazdani42/nvim-tree.lua'
     'kyazdani42/nvim-web-devicons'
+    'lewis6991/gitsigns.nvim'
     'lukas-reineke/indent-blankline.nvim'
-    'mhinz/vim-signify'
     'navarasu/onedark.nvim'
     'nvim-lua/plenary.nvim'
     'nvim-lualine/lualine.nvim'
@@ -28,6 +26,19 @@ PLUGINS=(
     'tpope/vim-fugitive'
     'tpope/vim-repeat'
     'tpope/vim-surround'
+    # LSP Support
+    'VonHeikemen/lsp-zero.nvim'
+    'neovim/nvim-lspconfig'
+    'williamboman/mason.nvim'
+    'williamboman/mason-lspconfig.nvim'
+    'hrsh7th/nvim-cmp'
+    'hrsh7th/cmp-nvim-lsp'
+    'hrsh7th/cmp-buffer'
+    'hrsh7th/cmp-path'
+    'saadparwaiz1/cmp_luasnip'
+    'hrsh7th/cmp-nvim-lua'
+    'L3MON4D3/LuaSnip'
+    'rafamadriz/friendly-snippets'
 )
 
 NVIMDIR=$HOME/.config/nvim;

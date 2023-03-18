@@ -1,7 +1,8 @@
 -- Vimars init.lua
--- Austin Bricker, 2017-2022
+-- Austin Bricker, 2017-2023
 
 require("diffview").setup()
+require("gitsigns").setup()
 require("hop").setup()
 require("nvim-tree").setup()
 
@@ -35,6 +36,14 @@ require("lualine").setup{
     tabline = {},
     extensions = {},
 }
+
+local lsp = require("lsp-zero").preset({
+    name = 'minimal',
+    set_lsp_keymaps = true,
+    manage_nvim_cmp = true,
+    suggest_lsp_servers = false,
+})
+lsp.setup()
 
 require('onedark').setup {
     style = 'darker'
@@ -108,6 +117,7 @@ vnomap("E", "$")
 nnomap("J", ":bp<CR>")
 nnomap("K", ":bn<CR>")
 nnomap("gJ", "J<CR>")
+nnomap("gK", "K<CR>")
 inomap("jk", "<esc>")
 
 nnomap("L", "L<bar>zz<CR>")
@@ -126,14 +136,11 @@ vnomap("Y", "y$")
 nnomap("[<space>", "O<esc>j")
 nnomap("]<space>", "o<esc>k")
 
-nnomap("<leader>g", ":SignifyHunkUndo<CR>")
+nnomap("<leader>b", ":Gitsigns toggle_current_line_blame<CR>")
+nnomap("<leader>g", ":Gitsigns reset_hunk<CR>")
 
 nnomap("<C-t>", ":ToggleTerm<CR>")
 tnomap("<C-t>", "<C-\\><C-N>:ToggleTerm<CR>")
-
-nnomap("[a", ":ALEPrevious<CR>")
-nnomap("]a", ":ALENext<CR>")
-nnomap("gh", ":ALEDetail<CR>")
 
 nnomap("<leader>t", ":NvimTreeToggle<CR>")
 
@@ -151,9 +158,7 @@ nnomap("<leader><leader>j", ":HopLineStartAC<CR>")
 nnomap("<leader><leader>k", ":HopLineStartBC<CR>")
 nnomap("<leader><leader>/", ":HopPattern<CR>")
 
-vim.g.signify_sign_delete = '-'
 vim.g.closetag_filetypes = 'html, xhtml, phtml, php'
-vim.g.ale_floating_preview = 1
 
 -- Strip trailing whitespace
 vim.api.nvim_create_autocmd("BufWritePre", {
