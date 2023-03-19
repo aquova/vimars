@@ -139,6 +139,9 @@ nnomap("]<space>", "o<esc>k")
 nnomap("<leader>b", ":Gitsigns toggle_current_line_blame<CR>")
 nnomap("<leader>g", ":Gitsigns reset_hunk<CR>")
 
+nnomap("]c", ":Gitsigns next_hunk<CR>")
+nnomap("[c", ":Gitsigns prev_hunk<CR>")
+
 nnomap("<C-t>", ":ToggleTerm<CR>")
 tnomap("<C-t>", "<C-\\><C-N>:ToggleTerm<CR>")
 
