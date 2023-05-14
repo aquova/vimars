@@ -1,6 +1,7 @@
 -- Vimars init.lua
 -- Austin Bricker, 2017-2023
 
+require("dapui").setup()
 require("diffview").setup()
 require("gitsigns").setup()
 require("hop").setup()
@@ -11,12 +12,23 @@ require("bufferline").setup{
     insert_at_end = true,
 }
 
-require("toggleterm").setup{
-    direction = 'float'
+local dap = require("dap")
+dap.adapters.python = {
+    type = "executable",
+    command = "python",
+    args = { "-m", "debugpy.adapter" },
+    options = {
+        source_filetype = "python",
+    },
 }
-
-require("marks").setup{
-    builtin_marks = { ".", "<", ">", "^", "'" }
+dap.configurations.python = {
+    {
+        type = "python",
+        request = "launch",
+        name = "Launch file",
+        program = "${file}",
+        pythonPath = "/usr/bin/python"
+    },
 }
 
 require("lualine").setup{
@@ -45,10 +57,18 @@ local lsp = require("lsp-zero").preset({
 })
 lsp.setup()
 
+require("marks").setup{
+    builtin_marks = { ".", "<", ">", "^", "'" }
+}
+
 require('onedark').setup {
     style = 'darker'
 }
 require('onedark').load()
+
+require("toggleterm").setup{
+    direction = 'float'
+}
 
 local set = vim.opt
 set.background = "dark"
@@ -147,11 +167,13 @@ tnomap("<C-t>", "<C-\\><C-N>:ToggleTerm<CR>")
 
 nnomap("<leader>t", ":NvimTreeToggle<CR>")
 
-nnomap("<leader>f", ":Telescope live_grep<CR>")
-nnomap("<C-p>",      ":Telescope find_files<CR>")
+nnomap("<C-f>",     ":Telescope live_grep<CR>")
+nnomap("<C-p>",     ":Telescope find_files<CR>")
 nnomap("<leader>d", ":lua DiffviewToggle()<CR>")
 nnomap("<leader>z", ":Telescope spell_suggest<CR>")
 nnomap("<leader>m", ":Telescope man_pages<CR>")
+nnomap("<leader>x", ":lua require('dapui').toggle()<CR>")
+nnomap("<leader>p", ":lua require('dap').toggle_breakpoint()<CR>")
 
 nnomap("<leader><leader>w", ":HopWordAC<CR>")
 nnomap("<leader><leader>b", ":HopWordBC<CR>")
