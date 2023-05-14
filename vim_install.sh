@@ -5,6 +5,7 @@
 # Austin Bricker, 2018-2023
 
 PLUGINS=(
+    'alaviss/nim.nvim'
     'alvan/vim-closetag'
     'akinsho/toggleterm.nvim'
     'aquova/vim-pico8-syntax'
