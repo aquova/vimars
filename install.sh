@@ -4,13 +4,20 @@
 # Requires git to be installed
 # Austin Bricker, 2018-2023
 
-PLUGINS=(
-    'alaviss/nim.nvim'
+VSCODE_SAFE_PLUGINS=(
     'alvan/vim-closetag'
+    'jiangmiao/auto-pairs'
+    'phaazon/hop.nvim'
+    'tpope/vim-commentary'
+    'tpope/vim-repeat'
+    'tpope/vim-surround'
+)
+
+NEOVIM_ONLY_PLUGINS=(
+    'alaviss/nim.nvim'
     'akinsho/toggleterm.nvim'
     'aquova/vim-pico8-syntax'
     'chentoast/marks.nvim'
-    'jiangmiao/auto-pairs'
     'kyazdani42/nvim-tree.lua'
     'kyazdani42/nvim-web-devicons'
     'lewis6991/gitsigns.nvim'
@@ -19,14 +26,10 @@ PLUGINS=(
     'nvim-lua/plenary.nvim'
     'nvim-lualine/lualine.nvim'
     'nvim-telescope/telescope.nvim'
-    'phaazon/hop.nvim'
     'romgrk/barbar.nvim'
     'sheerun/vim-polyglot'
     'sindrets/diffview.nvim'
-    'tpope/vim-commentary'
     'tpope/vim-fugitive'
-    'tpope/vim-repeat'
-    'tpope/vim-surround'
     # LSP Support
     'VonHeikemen/lsp-zero.nvim'
     'neovim/nvim-lspconfig'
@@ -37,15 +40,36 @@ PLUGINS=(
     'L3MON4D3/LuaSnip'
 )
 
+VSCODE_ONLY=false
+for arg in "$@"; do
+    case $arg in
+        --vscode)
+            VSCODE_ONLY=true
+            ;;
+        *)
+            # Do nothing
+            ;;
+    esac
+    shift
+done
+
 NVIMDIR=$HOME/.config/nvim;
 
 echo "Installing Neovim plugins";
 mkdir -p $NVIMDIR/pack/plugins/start
 pushd $NVIMDIR/pack/plugins/start > /dev/null;
-for pkg in "${PLUGINS[@]}"; do
+for pkg in "${VSCODE_SAFE_PLUGINS[@]}"; do
     echo "Installing $pkg";
     git clone --quiet https://github.com/$pkg &> /dev/null;
 done
+
+if [[ $VSCODE_ONLY == false ]]; then
+    for pkg in "${NEOVIM_ONLY_PLUGINS[@]}"; do
+        echo "Installing $pkg";
+        git clone --quiet https://github.com/$pkg &> /dev/null;
+    done
+fi
+
 popd > /dev/null;
 echo "";
 
