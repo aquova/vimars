@@ -4,7 +4,6 @@
 require("hop").setup()
 
 if not vim.g.vscode then
-    require("dapui").setup()
     require("diffview").setup()
     require("gitsigns").setup()
     require("nvim-tree").setup()
@@ -12,25 +11,6 @@ if not vim.g.vscode then
     require("bufferline").setup{
         auto_hide = true,
         insert_at_end = true,
-    }
-
-    local dap = require("dap")
-    dap.adapters.python = {
-        type = "executable",
-        command = "python",
-        args = { "-m", "debugpy.adapter" },
-        options = {
-            source_filetype = "python",
-        },
-    }
-    dap.configurations.python = {
-        {
-            type = "python",
-            request = "launch",
-            name = "Launch file",
-            program = "${file}",
-            pythonPath = "/usr/bin/python"
-        },
     }
 
     require("lualine").setup{
@@ -195,8 +175,6 @@ else
     nnomap("<leader>d", ":lua DiffviewToggle()<CR>")
     nnomap("<leader>z", ":Telescope spell_suggest<CR>")
     nnomap("<leader>m", ":Telescope man_pages<CR>")
-    nnomap("<leader>x", ":lua require('dapui').toggle()<CR>")
-    nnomap("<leader>p", ":lua require('dap').toggle_breakpoint()<CR>")
 end
 
 nnomap("<leader><leader>w", ":HopWordAC<CR>")
