@@ -121,6 +121,11 @@ if vim.g.vscode then
     -- gt/gT also performs this by default
     nnomap("J", "<Cmd>call VSCodeNotify('workbench.action.previousEditor')<CR>")
     nnomap("K", "<Cmd>call VSCodeNotify('workbench.action.nextEditor')<CR>")
+    nnomap("gJ", "<Cmd>call VSCodeNotify('editor.action.joinLines')<CR>")
+
+    -- Neovim's undo will not mark a file as clean when all changes are undone. Override with built-in VSCode implementation
+    nnomap("u", "<Cmd>call VSCodeNotify('undo')<CR>")
+    nnomap("<C-r>", "<Cmd>call VSCodeNotify('redo')<CR>")
 else
     nnomap("J", ":bp<CR>")
     nnomap("K", ":bn<CR>")
@@ -146,18 +151,20 @@ nnomap("[<space>", "O<esc>j")
 nnomap("]<space>", "o<esc>k")
 
 if vim.g.vscode then
-    nnomap("J", "<Cmd>call VSCodeNotify('workbench.action.previousEditor')<CR>")
-    nnomap("K", "<Cmd>call VSCodeNotify('workbench.action.nextEditor')<CR>")
-    nnomap("gJ", "<Cmd>call VSCodeNotify('editor.action.joinLines')<CR>")
-
     nnomap("[c", "<Cmd>call VSCodeNotify('workbench.action.editor.previousChange')<CR>")
     nnomap("]c", "<Cmd>call VSCodeNotify('workbench.action.editor.nextChange')<CR>")
 
     nnomap("[p", "<Cmd>call VSCodeNotify('editor.debug.action.goToPreviousBreakpoint')<CR>")
     nnomap("]p", "<Cmd>call VSCodeNotify('editor.debug.action.goToNextBreakpoint')<CR>")
 
+    -- Requires the "Go to Next Error" extension
+    nnomap("[e", "<Cmd>call VSCodeNotify('go-to-next-error.prev.warning')<CR>")
+    nnomap("]e", "<Cmd>call VSCodeNotify('go-to-next-error.next.warning')<CR>")
+
     nnomap("gp", "<Cmd>call VSCodeNotify('editor.debug.action.toggleBreakpoint')<CR>")
     nnomap("<leader>g", "<Cmd>call VSCodeNotify('git.revertSelectedRanges')<CR>")
+
+    nnomap("<leader>t", "<Cmd>call VSCodeNotify('workbench.action.toggleSidebarVisibility')<CR>")
 else
     nnomap("<leader>b", ":Gitsigns toggle_current_line_blame<CR>")
     nnomap("<leader>g", ":Gitsigns reset_hunk<CR>")
@@ -226,4 +233,9 @@ end
 vim.api.nvim_create_autocmd("FileType", {
     pattern = { "nim" },
     command = "setlocal commentstring=#\\ %s"
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "cpp" },
+    command = "setlocal commentstring=//\\ %s"
 })
