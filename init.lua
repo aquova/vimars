@@ -39,6 +39,13 @@ if not vim.g.vscode then
     })
     lsp.setup()
 
+    local cmp = require('cmp')
+    cmp.setup({
+        mapping = {
+            ['<CR>'] = cmp.mapping.confirm({select = true});
+        }
+    })
+
     require("marks").setup{
         builtin_marks = { ".", "<", ">", "^", "'" }
     }
