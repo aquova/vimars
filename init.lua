@@ -176,6 +176,10 @@ else
     nnomap("<leader>b", ":Gitsigns toggle_current_line_blame<CR>")
     nnomap("<leader>g", ":Gitsigns reset_hunk<CR>")
 
+    nnomap("[e", ":lua vim.diagnostic.goto_prev()<CR>")
+    nnomap("]e", ":lua vim.diagnostic.goto_next()<CR>")
+    nnomap("<leader>e", ":Telescope diagnostics<CR>")
+
     nnomap("]c", ":Gitsigns next_hunk<CR>")
     nnomap("[c", ":Gitsigns prev_hunk<CR>")
 
