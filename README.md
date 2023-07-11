@@ -1,5 +1,7 @@
 # vimars
 
+**As of July 2023, this repository is archived. Switching to a different plugin manager removed the need for the installation scripts, and the sole `init.lua` file has been moved to https://github.com/aquova/dotfiles.**
+
 My personal Neovim configuration and setup scripts, now with a cute repo name.
 
 https://github.com/aquova/vimars
