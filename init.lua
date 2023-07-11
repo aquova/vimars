@@ -1,6 +1,49 @@
 -- Vimars init.lua
 -- Austin Bricker, 2017-2023
 
+-- Setup lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+    vim.fn.system({
+        "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=stable", lazypath
+    })
+end
+vim.opt.rtp:prepend(lazypath)
+require("lazy").setup({
+    {'alaviss/nim.nvim', cond = not vim.g.vscode},
+    {'alvan/vim-closetag'},
+    {'akinsho/toggleterm.nvim', cond = not vim.g.vscode},
+    {'chentoast/marks.nvim', cond = not vim.g.vscode},
+    {'jiangmiao/auto-pairs'},
+    {'kyazdani42/nvim-tree.lua', cond = not vim.g.vscode, dependencies = {
+        'kyazdani42/nvim-web-devicons',
+    }},
+    {'lewis6991/gitsigns.nvim', cond = not vim.g.vscode},
+    {'lukas-reineke/indent-blankline.nvim', cond = not vim.g.vscode},
+    {'navarasu/onedark.nvim', cond = not vim.g.vscode},
+    {'nvim-lualine/lualine.nvim', cond = not vim.g.vscode},
+    {'nvim-telescope/telescope.nvim', cond = not vim.g.vscode, dependencies = {
+        'nvim-lua/plenary.nvim',
+    }},
+    {'phaazon/hop.nvim'},
+    {'romgrk/barbar.nvim', cond = not vim.g.vscode},
+    {'sheerun/vim-polyglot', cond = not vim.g.vscode},
+    {'sindrets/diffview.nvim', cond = not vim.g.vscode},
+    {'tpope/vim-commentary'},
+    {'tpope/vim-fugitive', cond = not vim.g.vscode},
+    {'tpope/vim-repeat'},
+    {'tpope/vim-surround'},
+    -- LSP Support
+    {'VonHeikemen/lsp-zero.nvim', cond = not vim.g.vscode, dependencies = {
+        'neovim/nvim-lspconfig',
+        'williamboman/mason.nvim',
+        'williamboman/mason-lspconfig.nvim',
+        'hrsh7th/nvim-cmp',
+        'hrsh7th/cmp-nvim-lsp',
+        'L3MON4D3/LuaSnip'
+    }},
+})
+
 require("hop").setup()
 
 if not vim.g.vscode then
