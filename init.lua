@@ -232,6 +232,7 @@ else
     nnomap("<leader>t", ":NvimTreeToggle<CR>")
 
     nnomap("<C-f>",     ":Telescope live_grep<CR>")
+    nnomap("<C-S-f>",   ":Telescope grep_string<CR>")
     nnomap("<C-p>",     ":Telescope find_files<CR>")
     nnomap("<leader>d", ":lua DiffviewToggle()<CR>")
     nnomap("<leader>z", ":Telescope spell_suggest<CR>")
