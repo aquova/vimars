@@ -14,7 +14,6 @@ require("lazy").setup({
     {'alvan/vim-closetag'},
     {'akinsho/toggleterm.nvim', cond = not vim.g.vscode},
     {'chentoast/marks.nvim', cond = not vim.g.vscode},
-    {'jiangmiao/auto-pairs'},
     {'kyazdani42/nvim-tree.lua', cond = not vim.g.vscode, dependencies = {
         'kyazdani42/nvim-web-devicons',
     }},
@@ -25,15 +24,17 @@ require("lazy").setup({
     {'nvim-telescope/telescope.nvim', cond = not vim.g.vscode, dependencies = {
         'nvim-lua/plenary.nvim',
     }},
-    {'phaazon/hop.nvim'},
-    {'romgrk/barbar.nvim', cond = not vim.g.vscode},
+    -- {'phaazon/hop.nvim'},
+    {'aznhe21/hop.nvim', branch = 'fix-some-bugs'},
+    {'romgrk/barbar.nvim', cond = not vim.g.vscode, dependencies = {
+        'kyazdani42/nvim-web-devicons',
+    }},
     {'sheerun/vim-polyglot', cond = not vim.g.vscode},
     {'sindrets/diffview.nvim', cond = not vim.g.vscode},
     {'tpope/vim-commentary'},
     {'tpope/vim-fugitive', cond = not vim.g.vscode},
     {'tpope/vim-repeat'},
     {'tpope/vim-surround'},
-    -- LSP Support
     {'VonHeikemen/lsp-zero.nvim', cond = not vim.g.vscode, dependencies = {
         'neovim/nvim-lspconfig',
         'williamboman/mason.nvim',
@@ -42,6 +43,7 @@ require("lazy").setup({
         'hrsh7th/cmp-nvim-lsp',
         'L3MON4D3/LuaSnip'
     }},
+    {'windwp/nvim-autopairs', event = "InsertEnter"},
 })
 
 require("hop").setup()
@@ -234,6 +236,7 @@ else
     nnomap("<C-f>",     ":Telescope live_grep<CR>")
     nnomap("<C-S-f>",   ":Telescope grep_string<CR>")
     nnomap("<C-p>",     ":Telescope find_files<CR>")
+    nnomap("<C-S-p>",   ":BufferPick<CR>")
     nnomap("<leader>d", ":lua DiffviewToggle()<CR>")
     nnomap("<leader>z", ":Telescope spell_suggest<CR>")
     nnomap("<leader>m", ":Telescope man_pages<CR>")
